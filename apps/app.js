@@ -13,25 +13,60 @@ let popularSection = document.querySelector(`#popularSection`);
 let sectionTitle = document.querySelector(`#sectionTitle`);
 let popularGrid = document.querySelector(`#popularGrid`);
 let main = document.querySelector(`#main`);
+let pageIndex = 1;
+let pageSize = 10;
+
+
+
 
 fetch(`https://rentcar.stepprojects.ge/api/Car`)
-.then(resp => resp.json())
-.then(data => {
-    data.forEach(product => {
-        let card = document.createElement(`div`)
-        card.innerHTML = createCard(product)
-        main.appendChild(card)
-        card.addEventListener("click", () => {
-            window.location.href = `./templates/details.html`
-        })
-        
+  .then((resp) => resp.json())
+  .then((data) => {
+    data.forEach((product) => {
+      let card = document.createElement(`div`);
+      card.innerHTML = createCard(product);
+      main.appendChild(card);
+      card.addEventListener("click", () => {
+        window.location.href = `./templates/details.html?id=${product.id}`;
+      });
     });
+  });
 
-})
+filterBtn.addEventListener("click", () => {
+  fetch(
+    `https://rentcar.stepprojects.ge/api/Car/filter?capacity=${capacity.value}&startYear=${startYear.value}&endYear=${endYear.value}&city=${city.value}&pageIndex=1&pageSize=10`,
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      main.innerHTML = ``;
+      data.data.forEach((product) => {
+        let card = document.createElement(`div`);
+        card.innerHTML = createCard(product);
+        main.appendChild(card);
 
+        card.addEventListener("click", () => {
+          window.location.href = `./templates/details.html?id=${product.id}`;
+        });
+      });
+    });
+});
+
+
+fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
+  .then((resp) => resp.json())
+  .then((data) => {
+    data.forEach((product) => {
+      let car = document.createElement(`div`);
+      car.innerHTML = createCard(product);
+      popularGrid.appendChild(car);
+      car.addEventListener(`click`, () => {
+        window.location.href = `./templates/details.html?id=${product.id}`;
+      });
+    });
+  });
 
 function createCard(obj) {
-    return `<div class="car-card">
+  return `<div class="car-card">
     <div class="car-image-wrap">
       <img src="${obj.imageUrl3 || "placeholder.jpg"}" alt="${obj.brand || ""}" />
       <span class="car-badge">${obj.city || "უცნობი"}</span>

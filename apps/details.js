@@ -5,7 +5,9 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
 .then(resp => resp.json())
 .then(data => {
     console.log(data);
-    main.innerHTML = createCard(data)
+    let card = document.createElement(`div`)
+    card.innerHTML = createCard(data)
+    main.appendChild(card)
 
 })
 
