@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header id="header">
+          <nav class="navbar" id="navbar">
+    <a href="./index.html" class="logo" id="logo" >Car<span>Rental</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="./favourites.html">❤️ Favorites</a>
+      <a href="./register.html">Registration</a>
+      <a href="./login.html">Log In</a>
+    </div>
+  </nav>
+        <div class="filters" id="filters">
+  <input id="capacity"  type="number" placeholder="Capacity" />
+  <input id="startYear" type="number" placeholder="Start Year" />
+  <input id="endYear"   type="number" placeholder="End Year" />
+  <select id="city">
+  <option value="">All Countrys</option>
+</select>
+  <!-- <input id="city"      type="text"   placeholder="City" /> -->
+  <input id="phone"  type="number"  placeholder="Phone">
+  <button id="filterBtn">Filter</button>
+</div>
+    </header>
+        <section class="popular-section" id="popularSection">
+        <h2 class="section-title" id="sectionTitle" >Popular Cars🔥</h2>
+        <div class="popular-grid" id="popularGrid"></div>
+    </section>
+    <main id="main" >
+
+    </main>
+
+
+    <script src="./apps/app.js"></script>
+</body>
+</html>

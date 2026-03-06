@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0f13;
+  font-family: "Segoe UI", sans-serif;
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+h1 span {
+  color: #e63946;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #1a1a24;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #e63946;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+  background: #2a2a3a;
+}
+
+.nav-links a:last-child {
+  background: #e63946;
+  color: #fff;
+}
+
+.nav-links a:last-child:hover {
+  background: #c1121f;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background: #1a1a24;
+  border-bottom: 1px solid #2a2a3a;
+  flex-wrap: wrap;
+}
+
+.filters input {
+  flex: 1;
+  min-width: 140px;
+  background: #0f0f13;
+  border: 1px solid #2a2a3a;
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.filters input::placeholder {
+  color: #555;
+}
+
+.filters input:focus {
+  border-color: #e63946;
+}
+
+.filters button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.filters button:hover {
+  background: #c1121f;
+}
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.car-card {
+  background: #1a1a24;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #2a2a3a;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(230, 57, 70, 0.2);
+}
+
+.car-image-wrap {
+  position: relative;
+  background: #12121a;
+  padding: 20px;
+  text-align: center;
+}
+
+.car-image-wrap img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.car-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #e63946;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.car-info {
+  padding: 18px 20px 22px;
+}
+
+.car-name {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.car-title {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.car-specs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.spec {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #aaa;
+  font-size: 0.8rem;
+  background: #22222e;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.spec span {
+  font-size: 14px;
+}
+
+.car-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-price {
+  color: #e63946;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.car-price small {
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.rent-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.rent-btn:hover {
+  background: #c1121f;
+}
+.popular-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.section-title span {
+    color: #e63946;
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.filters select {
+  flex: 1;
+  min-width: 140px;
+  background: #0f0f13;
+  border: 1px solid #2a2a3a;
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s;
+  appearance: none; /* ბრაუზერის default სტილი მოაშოროს */
+}
+
+.filters select:focus {
+  border-color: #e63946;
+}
+
+.filters select option {
+  background: #1a1a24;
+  color: #fff;
+}
+.fav-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  z-index: 10;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+}
