@@ -1,0 +1,115 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0f0f13;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+    padding-top: 70px;
+}
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.add-car {
+    display: none;
+}
+.back {
+    display: flex;
+    justify-content: right;
+}
+.registration-card {
+  background: #1a1a24;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registration-card h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.registration-card input {
+  background: #0f0f13;
+  border: 1px solid #2a2a3a;
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.registration-card input:focus {
+  border-color: #e63946;
+}
+
+.registration-card button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.registration-card button:hover {
+  background: #c1121f;
+}
+
+.registration-card p {
+  color: #888;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.registration-card a {
+  color: #e63946;
+  text-decoration: none;
+}
+.registration-card select {
+  background: #1a1a24;
+  border: 1px solid #2a2a3a;
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s;
+  appearance: none;
+  width: 100%;
+}
+
+.registration-card select:focus {
+  border-color: #e63946;
+}
+
+.registration-card select option {
+  background: #1a1a24;
+  color: #fff;
+}

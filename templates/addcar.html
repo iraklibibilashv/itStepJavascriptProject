@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/addcar.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./index.html" class="logo">Car<span>Rental</span></a>
+            <div class="nav-links">
+                <a href="./favorites.html">❤️ Favorites</a>
+                <a href="./addcar.html" class="add-car" >+ Add Car</a>
+                <a href="./register.html">Registration</a>
+                <a href="./login.html">Log In</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="registration-container">
+        <div class="registration-card" id="registrationCard">
+            <h2>Add Car</h2>
+            <input id="brand"          type="text"   placeholder="Brand"         required />
+            <input id="model"          type="text"   placeholder="Model"         required />
+            <input id="year"           type="number" placeholder="Year"          required />
+            <input id="price"          type="number" placeholder="Price"         required />
+            <input id="capacity"       type="number" placeholder="Capacity"      required />
+            <select id="transmission">
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+            </select>
+            <!-- <input id="transmission"   type="text"   placeholder="Transmission"  required /> -->
+            <input id="createdBy"      type="text"   placeholder="Created By"    required />
+            <input id="city"           type="text"   placeholder="City"          required />
+            <input id="createdByEmail" type="email"  placeholder="Email"         required />
+            <input id="fuelCapacity"   type="number" placeholder="Fuel Capacity" required />
+            <input id="latitude"       type="number" placeholder="Latitude"      required />
+            <input id="longitude"      type="number" placeholder="Longitude"     required />
+            <input id="image1"         type="file" /> 
+            <input id="image2"         type="file" />
+            <input id="image3"         type="file" />
+            <button id="addCarBtn">Add Car</button>
+        </div>
+    </div>
+    
+
+
+    <script src="../apps/addcar.js"></script>
+</body>
+</html>

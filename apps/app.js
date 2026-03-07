@@ -13,6 +13,7 @@ let popularSection = document.querySelector(`#popularSection`);
 let sectionTitle = document.querySelector(`#sectionTitle`);
 let popularGrid = document.querySelector(`#popularGrid`);
 let main = document.querySelector(`#main`);
+let carId = document.querySelector(`#carId`)
 let pageIndex = 1;
 let pageSize = 10;
 
@@ -33,9 +34,23 @@ fetch(`https://rentcar.stepprojects.ge/api/Car`)
   });
 
 filterBtn.addEventListener("click", () => {
-  fetch(
-    `https://rentcar.stepprojects.ge/api/Car/filter?capacity=${capacity.value}&startYear=${startYear.value}&endYear=${endYear.value}&city=${city.value}&pageIndex=1&pageSize=10`,
-  )
+  if(carId.value.trim()) {
+  fetch(`https://rentcar.stepprojects.ge/api/Car/${carId.value}`)
+  .then(resp => resp.json())
+  .then(data => {
+    main.innerHTML = ``
+    popularGrid.innerHTML = ``
+    let card = document.createElement(`div`)
+    card.innerHTML = createCard(data)
+    main.appendChild(card)
+    card.addEventListener("click", () => {
+      window.location.href =`./templates/details.html?id=${data.id}`
+    })
+  })
+  return
+  }
+
+  fetch( `https://rentcar.stepprojects.ge/api/Car/filter?capacity=${capacity.value}&startYear=${startYear.value}&endYear=${endYear.value}&city=${city.value}&pageIndex=1&pageSize=10`,)
     .then((resp) => resp.json())
     .then((data) => {
       main.innerHTML = ``;
@@ -64,6 +79,20 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
       });
     });
   });
+
+
+fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
+.then(resp => resp.json())
+.then (data => {
+  let select = document.querySelector(`#city`)
+  data.forEach(cities => {
+    let option = document.createElement(`option`)
+    option.value = cities
+    option.innerText = cities
+    select.appendChild(option)
+  })
+})
+
 
 function createCard(obj) {
   return `<div class="car-card">

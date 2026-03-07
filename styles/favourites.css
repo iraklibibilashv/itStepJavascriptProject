@@ -1,0 +1,45 @@
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 24px;
+ 
+}
+
+
+#clearBtn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#clearBtn:hover {
+  background: #c1121f;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.remove-btn:hover {
+  background: #e63946;
+}
