@@ -16,6 +16,7 @@ loginBtn.addEventListener("click", () => {
         localStorage.setItem("token",data.token)
         localStorage.setItem("userRole",data.role)
         localStorage.setItem(`userEmail`,data.email)
+        localStorage.setItem(`phoneNumber`,data.phoneNumber)
         alert(`Login Success`)
         window.location.href = "../index.html"
         

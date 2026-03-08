@@ -124,6 +124,7 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
 
 
 function createCard(obj) {
+  let phoneNumber = JSON.parse(localStorage.getItem(`phoneNumber`))
   return `<div class="car-card">
     <div class="car-image-wrap">
       <img src="${obj.imageUrl3 || "placeholder.jpg"}" alt="${obj.brand || ""}" />
