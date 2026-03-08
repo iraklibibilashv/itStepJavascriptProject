@@ -6,15 +6,17 @@ let password = document.querySelector(`#password`);
 let registerBtn = document.querySelector(`#registerBtn`);
 
 
-let userInfo  = {
+
+registerBtn.addEventListener("click", () => {
+  let userInfo  = {
     firstName : firstName.value,
     lastName : lastName.value,
     email : email.value,
     phoneNumber : phoneNumber.value,
-    password : password.value
+    password : password.value,
+    role : "User"
+    
 }
-registerBtn.addEventListener("click", () => {
-    userInfo
     fetch(`https://rentcar.stepprojects.ge/api/Users/register`, {
         method : "POST",
         headers : {
@@ -25,6 +27,12 @@ registerBtn.addEventListener("click", () => {
     .then(resp => resp.json())
     .then(data => {
         console.log(data);
+        alert(`Registration Succesful`)
+        window.location.href = "./login.html"
+        
+    })
+    .catch(err => {
+        console.log(err);
         
     })
 })
