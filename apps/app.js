@@ -16,7 +16,31 @@ let main = document.querySelector(`#main`);
 let carId = document.querySelector(`#carId`)
 let pageIndex = 1;
 let pageSize = 10;
+let token = localStorage.getItem("token");
+let register = document.querySelector(`#register`);
+let logIn = document.querySelector(`#logIn`);
+let addCar = document.querySelector(`#addCar`);
+let myCars = document.querySelector(`#myCars`);
+let logout = document.querySelector(`#logOut`);
 
+if(logout) {
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("userRole")
+    localStorage.removeItem("userEmail")
+    window.location.reload
+  })
+}
+
+if(token) {
+  register.style.display = "none"
+  logIn.style.display = "none"
+} else {
+  addCar.style.display = "none"
+  myCars.style.display = "none"
+  favourites.style.display = "none"
+  logout.style.display = "none"
+}
 
 
 
@@ -92,6 +116,7 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
     select.appendChild(option)
   })
 })
+
 
 
 function createCard(obj) {
