@@ -23,6 +23,10 @@ let addCar = document.querySelector(`#addCar`);
 let myCars = document.querySelector(`#myCars`);
 let logout = document.querySelector(`#logOut`);
 
+
+// 598777777 
+// 1234
+
 if(logout) {
   logout.addEventListener("click", () => {
     localStorage.removeItem("token")
