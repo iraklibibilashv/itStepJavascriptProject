@@ -303,3 +303,32 @@ h1 span {
 .fav-btn:hover {
   transform: scale(1.2);
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 30px 0;
+}
+.pagination button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pagination button:hover {
+  background: #c1121f;
+}
+.pagination button:disabled {
+  background: #2a2a3a;
+  cursor: not-allowed;
+}
+.pagination span {
+  color: #fff;
+  font-size: 0.9rem;
+}

@@ -22,6 +22,9 @@ let logIn = document.querySelector(`#logIn`);
 let addCar = document.querySelector(`#addCar`);
 let myCars = document.querySelector(`#myCars`);
 let logout = document.querySelector(`#logOut`);
+let pageInfo = document.querySelector(`#pageInfo`);
+let prevBtn = document.querySelector(`#prevBtn`);
+let nextBtn = document.querySelector(`#nextBtn`)
 
 
 // 598777777 
@@ -46,20 +49,49 @@ if(token) {
   logout.style.display = "none"
 }
 
+function pageCars() {
+  fetch(
+    `https://rentcar.stepprojects.ge/api/Car/paginated?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+    .then(resp => resp.json())
+    .then(data => {
+      main.innerHTML = ``
+      data.data.forEach((product) => {
+        let card = document.createElement(`div`)
+        card.innerHTML = createCard(product)
+        main.appendChild(card)
+        card.addEventListener("click", () => {
+          window.location.href = `./templates/details.html?id=${product.id}`;
+        })
+      })
+      pageInfo.innerText = `Page ${data.currentPage} / ${data.totalPages}`
+      prevBtn.disabled = pageIndex == 1
+      nextBtn.disabled = pageIndex == data.totalPages
+    })
+  
+}
+prevBtn.addEventListener("click",() => {
+  pageIndex--
+  pageCars()
+})
+nextBtn.addEventListener("click", () => {
+  pageIndex++
+  pageCars()
+})
+pageCars()
 
 
-fetch(`https://rentcar.stepprojects.ge/api/Car`)
-  .then((resp) => resp.json())
-  .then((data) => {
-    data.forEach((product) => {
-      let card = document.createElement(`div`);
-      card.innerHTML = createCard(product);
-      main.appendChild(card);
-      card.addEventListener("click", () => {
-        window.location.href = `./templates/details.html?id=${product.id}`;
-      });
-    });
-  });
+// fetch(`https://rentcar.stepprojects.ge/api/Car`)
+//   .then((resp) => resp.json())
+//   .then((data) => {
+//     data.forEach((product) => {
+//       let card = document.createElement(`div`);
+//       card.innerHTML = createCard(product);
+//       main.appendChild(card);
+//       card.addEventListener("click", () => {
+//         window.location.href = `./templates/details.html?id=${product.id}`;
+//       });
+//     });
+//   });
 
 filterBtn.addEventListener("click", () => {
   if(carId.value.trim()) {
