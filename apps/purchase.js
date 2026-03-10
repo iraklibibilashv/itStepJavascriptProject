@@ -43,10 +43,11 @@ if(!user.phoneNumber) {
     }, 1000);
     
 }
-
+loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
   .then(resp => resp.json())
   .then(data => {
+    loader.style.display = "none"
     carPrice = data.price
     main.innerHTML = createCard(data)
     updateTotal()
@@ -83,50 +84,6 @@ function updateTotal() {
   let days = document.querySelector(`#multiplier`).value || 1
   document.querySelector(`#totalPrice`).innerText = `Total: $${carPrice * days}`
 }
-
-// fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
-// .then(resp => resp.json())
-// .then(data => {
-//     carPrice = data.price
-//     main.innerHTML = createCard(data)
-// updateTotal()
-// })
-
-// multiplier.addEventListener("input", () => {
-//     updateTotal()
-// })
-
-// function updateTotal() {
-//     let days = document.querySelector(`#multiplier`).value || 1
-//     document.querySelector(`#totalPrice`).innerText = `Total: $${carPrice * days}`
-    
-// }
-
-
-// purchaseBtn.addEventListener("click", () => {
-//     let days = multiplier.value
-
-//     if(!days || days < 1) {
-//         showAlert(`Please enter number of days!`,`error`)
-//         return
-//     }
-
-//     fetch(`https://rentcar.stepprojects.ge/Purchase/purchase?phoneNumber=${user.phoneNumber}&carId=${id}&multiplier=${days}`, {
-//         method: "POST"
-//     })
-//     .then(resp => resp.json())
-//     .then (data => {
-//        showAlert(`Car Rented Succsesfully! Total : $${carPrice * days}`)
-//        setTimeout(() => {
-//          window.location.href = `../index.html`
-        
-//        }, 1000);
-       
-//     })
-//     .catch(err => {
-//         showAlert(`Something went wrong!`,`error`)
-//     })
-// })
 
 
 function createCard(obj) {

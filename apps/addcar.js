@@ -45,7 +45,6 @@ let longitude = document.querySelector(`#longitude`).value;
 
 
 
-
 fetch(`https://rentcar.stepprojects.ge/api/Car`, {
     method: "POST",
     headers : {
@@ -71,7 +70,6 @@ fetch(`https://rentcar.stepprojects.ge/api/Car`, {
 })
 .then(resp => resp.json())
 .then(data => {
-    console.log(data);
     showAlert(`Car Added`)
     setTimeout (() => {
     window.location.href = `../index.html`

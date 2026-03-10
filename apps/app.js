@@ -25,7 +25,8 @@ let logout = document.querySelector(`#logOut`);
 let myAccount = document.querySelector(`#myAccount`)
 let pageInfo = document.querySelector(`#pageInfo`);
 let prevBtn = document.querySelector(`#prevBtn`);
-let nextBtn = document.querySelector(`#nextBtn`)
+let nextBtn = document.querySelector(`#nextBtn`);
+let loader = document.querySelector("#loader");
 
 
 // 598777777 
@@ -152,10 +153,11 @@ filterBtn.addEventListener("click", () => {
     });
 });
 
-
+loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
   .then((resp) => resp.json())
   .then((data) => {
+    loader.style.display = "none"
     data.forEach((product) => {
         if(!product.imageUrl3) return
       let car = document.createElement(`div`);

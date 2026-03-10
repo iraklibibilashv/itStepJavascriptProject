@@ -32,12 +32,11 @@ if (!phoneNumber) {
     showAlert(`Please Log In!`)
     window.location.href = `./login.html`
 }
-
+loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Car`)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data);
-        
+        loader.style.display = "none"
         if (data.length === 0) {
             myCarGrid.innerHTML = `
                 <div class="empty-state">

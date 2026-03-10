@@ -8,6 +8,8 @@ let addCar = document.querySelector(`#addCar`);
 let myCars = document.querySelector(`#myCars`);
 let logout = document.querySelector(`#logOut`);
 let myAccount = document.querySelector(`#myAccount`)
+let loader = document.querySelector("#loader")
+
 if(logout) {
   logout.addEventListener("click", () => {
     localStorage.removeItem("token")
@@ -41,12 +43,17 @@ clearBtn.addEventListener("click", () => {
     favGrid.innerHTML = ``
 })
 
+loader.style.display = "flex"
+
+
 fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorite-cars`)
 .then(resp => resp.json())
 .then (data => {
        let unique = data.filter((obj, index, self) => 
       index === self.findIndex(c => c.id === obj.id)
+       
     )
+    loader.style.display = "none"
     if(unique.length == 0) {
         favGrid.innerHTML = `         <div class="empty-state">
                 <span>💔</span>

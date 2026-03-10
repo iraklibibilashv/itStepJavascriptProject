@@ -423,6 +423,23 @@ h1 span {
   color: #fff;
 }
 
+
+
+
+.loader{
+width:60px;
+height:60px;
+border:6px solid #ddd;
+border-top:6px solid #e63946;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(60px); }
   to   { opacity: 1; transform: translateX(0); }

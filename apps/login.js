@@ -1,4 +1,5 @@
 let loginBtn = document.querySelector(`#loginBtn`)
+loader.style.display = "flex"
 loginBtn.addEventListener("click", () => {
     fetch(`https://rentcar.stepprojects.ge/api/Users/login`,{
         method : "POST",
@@ -12,7 +13,8 @@ loginBtn.addEventListener("click", () => {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log(data);
+            loader.style.display = "none"
+        
         localStorage.setItem("token",data.token)
         localStorage.setItem("userRole",data.role)
         localStorage.setItem(`userEmail`,data.email)

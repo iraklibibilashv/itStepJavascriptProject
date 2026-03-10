@@ -35,10 +35,11 @@ if (!phoneNumber) {
     window.location.href = `./login.html`
 }
 
-// პროფილი
+loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}`)
     .then(resp => resp.json())
     .then(data => {
+      loader.style.display = "none"
         document.querySelector(`#userInfo`).innerHTML = `
             <div class="user-info">
                 <div class="user-row"><span>👤 Name:</span> ${data.firstName || ''} ${data.lastName || ''}</div>
@@ -48,12 +49,10 @@ fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}`)
         `
     })
 
-// Messages dropdown toggle
 document.querySelector(`#messagesToggle`).addEventListener(`click`, () => {
     document.querySelector(`#messagesDropdown`).classList.toggle(`hidden`)
 })
 
-// Inbox
 document.querySelector(`#inboxBtn`).addEventListener(`click`, () => {
     document.querySelector(`#inboxSection`).classList.toggle(`hidden`)
     document.querySelector(`#newMessageSection`).classList.add(`hidden`)

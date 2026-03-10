@@ -6,7 +6,7 @@ let password = document.querySelector(`#password`);
 let registerBtn = document.querySelector(`#registerBtn`);
 
 
-
+loader.style.display = "flex"
 registerBtn.addEventListener("click", () => {
   let userInfo  = {
     firstName : firstName.value,
@@ -17,6 +17,7 @@ registerBtn.addEventListener("click", () => {
     role : "User"
     
 }
+
     fetch(`https://rentcar.stepprojects.ge/api/Users/register`, {
         method : "POST",
         headers : {
@@ -26,7 +27,7 @@ registerBtn.addEventListener("click", () => {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log(data);
+      loader.style.display = "none"
         showAlert(`Registration Succesful`)
         setTimeout(() => {
              window.location.href = "./login.html"

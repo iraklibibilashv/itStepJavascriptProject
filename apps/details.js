@@ -27,11 +27,11 @@ if(token) {
   myAccount.style.display = "none"
 }
 
-
+loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
 .then(resp => resp.json())
 .then(data => {
-    console.log(data);
+   loader.style.display = "none"
     let card = document.createElement(`div`)
     card.innerHTML = createCard(data)
     main.appendChild(card)

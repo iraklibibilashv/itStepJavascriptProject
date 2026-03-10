@@ -74,3 +74,17 @@ body {
   color: #e63946;
   text-decoration: none;
 }
+.loader{
+width:60px;
+height:60px;
+border:6px solid #ddd;
+border-top:6px solid #e63946;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
