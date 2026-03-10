@@ -49,11 +49,12 @@ loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorite-cars`)
 .then(resp => resp.json())
 .then (data => {
+      loader.style.display = "none"
        let unique = data.filter((obj, index, self) => 
       index === self.findIndex(c => c.id === obj.id)
        
     )
-    loader.style.display = "none"
+
     if(unique.length == 0) {
         favGrid.innerHTML = `         <div class="empty-state">
                 <span>💔</span>

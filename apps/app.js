@@ -141,6 +141,7 @@ filterBtn.addEventListener("click", () => {
     .then((data) => {
       main.innerHTML = ``;
       data.data.forEach((product) => {
+         if(!product.imageUrl3) return
         let card = document.createElement(`div`);
         card.innerHTML = createCard(product);
         main.appendChild(card);
