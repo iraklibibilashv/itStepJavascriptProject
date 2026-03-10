@@ -1,4 +1,34 @@
 let phoneNumber = localStorage.getItem("phoneNumber")
+let token = localStorage.getItem("token");
+let register = document.querySelector(`#register`);
+let logIn = document.querySelector(`#logIn`);
+let addCar = document.querySelector(`#addCar`);
+let myCars = document.querySelector(`#myCars`);
+let logout = document.querySelector(`#logOut`);
+let myAccount = document.querySelector(`#myAccount`)
+if(logout) {
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("userRole")
+    localStorage.removeItem("userEmail")
+    window.location.reload()
+  })
+}
+
+if(token) {
+  register.style.display = "none"
+  logIn.style.display = "none"
+} else {
+  addCar.style.display = "none"
+  myCars.style.display = "none"
+  favourites.style.display = "none"
+  logout.style.display = "none"
+  myAccount.style.display = "none"
+}
+
+
+
+
 
 if (!phoneNumber) {
     showAlert(`Please Log In`,`error`)

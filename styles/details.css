@@ -1,6 +1,7 @@
 main {
   display: flex !important;
   justify-content: center;
+  padding-top: 50px;
 }
 body {
   background: #0f0f13;
