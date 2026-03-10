@@ -17,6 +17,11 @@ h1 {
   font-size: 2rem;
   letter-spacing: 1px;
 }
+main {
+      display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
 
 h1 span {
   color: #e63946;
@@ -331,4 +336,94 @@ h1 span {
 .pagination span {
   color: #fff;
   font-size: 0.9rem;
+}
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 40px 20px 40px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e63946, transparent);
+}
+
+.divider span {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+.custom-alert {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: #1a1a24;
+  border: 1px solid #2a2a3a;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+  min-width: 280px;
+}
+
+.custom-alert.success {
+  border-left: 4px solid #2ecc71;
+}
+
+.custom-alert.error {
+  border-left: 4px solid #e63946;
+}
+
+.custom-alert p {
+  flex: 1;
+  margin: 0;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.alert-close:hover {
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
 }

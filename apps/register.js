@@ -27,12 +27,36 @@ registerBtn.addEventListener("click", () => {
     .then(resp => resp.json())
     .then(data => {
         console.log(data);
-        alert(`Registration Succesful`)
-        window.location.href = "./login.html"
+        showAlert(`Registration Succesful`)
+        setTimeout(() => {
+             window.location.href = "./login.html"
+        }, 1000);
+       
         
     })
     .catch(err => {
         console.log(err);
+        showAlert(`Something went wrong!`,`error`)
         
     })
 })
+
+
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
+}

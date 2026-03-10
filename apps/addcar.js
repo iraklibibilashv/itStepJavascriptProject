@@ -41,9 +41,35 @@ fetch(`https://rentcar.stepprojects.ge/api/Car`, {
 .then(resp => resp.json())
 .then(data => {
     console.log(data);
-    alert(`Car Added Succesfully`)
+    showAlert(`Car Added`)
+    setTimeout (() => {
     window.location.href = `../index.html`
+},1000)
     
 })
 .catch(err => console.log(err))
+showAlert(`Something went wrong!`,`error`)
 })
+
+
+
+
+
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
+}

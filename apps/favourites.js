@@ -1,9 +1,9 @@
 let favGrid = document.querySelector(`#favGrid`)
 let clearBtn = document.querySelector(`#clearBtn`)
-let phoneNumber = JSON.parse(localStorage.getItem(`phoneNumber`))
+let phoneNumber = localStorage.getItem(`phoneNumber`)
 
 if(!phoneNumber) {
-    alert(`Please Log In`)
+   showAlert(`Please Log In`,`error`)
     window.location.href = `./login.html`
     
 }
@@ -14,19 +14,30 @@ clearBtn.addEventListener("click", () => {
 fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorite-cars`)
 .then(resp => resp.json())
 .then (data => {
-    console.log(data);
-    if(data.length == 0) {
+       let unique = data.filter((obj, index, self) => 
+      index === self.findIndex(c => c.id === obj.id)
+    )
+    if(unique.length == 0) {
         favGrid.innerHTML = `         <div class="empty-state">
                 <span>💔</span>
                 <p>No Favourite Cars</p>
             </div>`
+            return
     }
-    data.forEach(obj => {
+    unique.forEach(obj => {
+        if(!obj.imageUrl3) return
         let car = document.createElement(`div`)
         car.innerHTML = createCard(obj)
         favGrid.appendChild(car)
-        clearBtn.addEventListener("")
-    });
+              car.querySelector(`.remove-btn`)?.addEventListener(`click`, (e) => { // ✅
+        e.stopPropagation()
+        document.querySelector(`#car-${e.target.dataset.id}`).remove()
+      })
+      car.addEventListener(`click`, () => {
+        window.location.href = `./details.html?id=${obj.id}`
+        
+    })
+})
 })
  function createCard(obj) {
   return `<div class="car-card" id="car-${obj.id}">
@@ -53,3 +64,21 @@ fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorite-cars`)
   </div>`
   }
 
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
+}

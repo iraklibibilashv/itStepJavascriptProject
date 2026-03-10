@@ -17,12 +17,37 @@ loginBtn.addEventListener("click", () => {
         localStorage.setItem("userRole",data.role)
         localStorage.setItem(`userEmail`,data.email)
         localStorage.setItem(`phoneNumber`,data.phoneNumber)
-        alert(`Login Success`)
-        window.location.href = "../index.html"
+        showAlert(`Logged In`)
+        setTimeout(() => {
+            window.location.href = "../index.html"
+        }, 1000);
+        
         
     })
     .catch(err => {
         console.log(err);
+        showAlert(`Phone Number or Password is Incorrect`,`error`)
         
     })
 })
+
+
+
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
+}

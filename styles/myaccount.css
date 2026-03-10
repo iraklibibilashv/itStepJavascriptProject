@@ -1,0 +1,211 @@
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #1a1a24;
+    border-radius: 12px;
+    border: 1px solid #2a2a3a;
+}
+
+.user-row {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.user-row span {
+    color: #fff;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.messages-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#messagesToggle {
+    background: #2a2a3a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+#messagesToggle:hover {
+    background: #e63946;
+}
+
+.messages-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: #1a1a24;
+    border-radius: 12px;
+    border: 1px solid #2a2a3a;
+}
+
+.messages-dropdown button {
+    background: #2a2a3a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.messages-dropdown button:hover {
+    background: #e63946;
+}
+
+.message-item {
+    padding: 12px;
+    background: #2a2a3a;
+    border-radius: 8px;
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.hidden {
+    display: none;
+}
+#newMessageSection {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 12px;
+    background: #1a1a24;
+    border-radius: 10px;
+    border: 1px solid #2a2a3a;
+}
+
+#msgCarId {
+    flex: 1;
+    background: #0f0f13;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+#msgCarId:focus {
+    border-color: #e63946;
+}
+
+#sendMessageBtn {
+    background: #e63946 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#sendMessageBtn:hover {
+    background: #c1121f !important;
+}
+.rentals-section {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rentals-section h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.rental-item {
+  background: #1a1a24;
+  border: 1px solid #2a2a3a;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.rental-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.rental-detail {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.rental-detail span {
+  margin-right: 6px;
+}
+.registration-card h2 {
+    color: #e63946;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+  padding-top: 20px;
+}
+#newMessageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 16px;
+  background: #1a1a24;
+  border-radius: 12px;
+  border: 1px solid #2a2a3a;
+}
+
+#msgPhoneNumber,
+#msgCarId {
+  background: #0f0f13;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#msgPhoneNumber:focus,
+#msgCarId:focus {
+  border-color: #e63946;
+}
+
+#sendMessageBtn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+#sendMessageBtn:hover {
+  background: #c1121f;
+}

@@ -15,13 +15,14 @@ let popularGrid = document.querySelector(`#popularGrid`);
 let main = document.querySelector(`#main`);
 let carId = document.querySelector(`#carId`)
 let pageIndex = 1;
-let pageSize = 10;
+let pageSize = 16;
 let token = localStorage.getItem("token");
 let register = document.querySelector(`#register`);
 let logIn = document.querySelector(`#logIn`);
 let addCar = document.querySelector(`#addCar`);
 let myCars = document.querySelector(`#myCars`);
 let logout = document.querySelector(`#logOut`);
+let myAccount = document.querySelector(`#myAccount`)
 let pageInfo = document.querySelector(`#pageInfo`);
 let prevBtn = document.querySelector(`#prevBtn`);
 let nextBtn = document.querySelector(`#nextBtn`)
@@ -35,7 +36,7 @@ if(logout) {
     localStorage.removeItem("token")
     localStorage.removeItem("userRole")
     localStorage.removeItem("userEmail")
-    window.location.reload
+    window.location.reload()
   })
 }
 
@@ -47,7 +48,40 @@ if(token) {
   myCars.style.display = "none"
   favourites.style.display = "none"
   logout.style.display = "none"
+  myAccount.style.display = "none"
 }
+
+
+
+function addFavListener(card,obj) {
+  let btn = card.querySelector(`.fav-btn`)
+  if(!btn) return
+  let isFav = false
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+    let phoneNumber = localStorage.getItem("phoneNumber")
+    if(!isFav) {
+      fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorites/${obj.id}`,{
+      method:"POST"
+      })
+      .then(() => {
+        isFav = true
+        btn.innerText = "❤️"
+        btn.style.color = "#e63946"
+        showAlert(`Added to Favourites`)
+      })
+    }
+    else {
+      isFav = false
+      btn.innerText = "🤍"
+      e.target.style.background = `rgba(0,0,0,0.5)`
+      showAlert(`Removed from Favourites`, `error`)
+    }
+  })
+}
+
 
 function pageCars() {
   fetch(
@@ -56,9 +90,11 @@ function pageCars() {
     .then(data => {
       main.innerHTML = ``
       data.data.forEach((product) => {
+        if(!product.imageUrl3) return
         let card = document.createElement(`div`)
         card.innerHTML = createCard(product)
         main.appendChild(card)
+        addFavListener(card, product)
         card.addEventListener("click", () => {
           window.location.href = `./templates/details.html?id=${product.id}`;
         })
@@ -80,18 +116,6 @@ nextBtn.addEventListener("click", () => {
 pageCars()
 
 
-// fetch(`https://rentcar.stepprojects.ge/api/Car`)
-//   .then((resp) => resp.json())
-//   .then((data) => {
-//     data.forEach((product) => {
-//       let card = document.createElement(`div`);
-//       card.innerHTML = createCard(product);
-//       main.appendChild(card);
-//       card.addEventListener("click", () => {
-//         window.location.href = `./templates/details.html?id=${product.id}`;
-//       });
-//     });
-//   });
 
 filterBtn.addEventListener("click", () => {
   if(carId.value.trim()) {
@@ -103,6 +127,7 @@ filterBtn.addEventListener("click", () => {
     let card = document.createElement(`div`)
     card.innerHTML = createCard(data)
     main.appendChild(card)
+    addFavListener(card,data)
     card.addEventListener("click", () => {
       window.location.href =`./templates/details.html?id=${data.id}`
     })
@@ -118,6 +143,7 @@ filterBtn.addEventListener("click", () => {
         let card = document.createElement(`div`);
         card.innerHTML = createCard(product);
         main.appendChild(card);
+        addFavListener(card,product)
 
         card.addEventListener("click", () => {
           window.location.href = `./templates/details.html?id=${product.id}`;
@@ -131,9 +157,11 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
   .then((resp) => resp.json())
   .then((data) => {
     data.forEach((product) => {
+        if(!product.imageUrl3) return
       let car = document.createElement(`div`);
       car.innerHTML = createCard(product);
       popularGrid.appendChild(car);
+      addFavListener(car, product)
       car.addEventListener(`click`, () => {
         window.location.href = `./templates/details.html?id=${product.id}`;
       });
@@ -161,6 +189,7 @@ function createCard(obj) {
     <div class="car-image-wrap">
       <img src="${obj.imageUrl3 || "placeholder.jpg"}" alt="${obj.brand || ""}" />
       <span class="car-badge">${obj.city || "უცნობი"}</span>
+       ${phoneNumber ? `<button class="fav-btn" data-id="${obj.id}">🤍</button>` : ``}
     </div>
     <div class="car-info">
       <div class="car-name">${obj.brand || "უცნობი"} ${obj.model || ""}</div>
@@ -174,8 +203,29 @@ function createCard(obj) {
         <div class="car-price">
           $${obj.price || 0} <small>/ day</small>
         </div>
-        <button class="rent-btn">Rent Now</button>
       </div>
     </div>
   </div>`;
+}
+
+
+
+
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
 }

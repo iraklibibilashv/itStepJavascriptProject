@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/myaccount.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="../index.html" class="logo">Car<span>Rental</span></a>
+            <div class="nav-links">
+                <a href="./favourites.html">❤️ Favorites</a>
+                <a href="./addcar.html">+ Add Car</a>
+                <a href="./register.html">Registration</a>
+                <a href="./login.html">Log In</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="registration-container">
+        <div class="registration-card">
+            <h2>My Account</h2>
+
+            <!-- პროფილი -->
+            <div id="userInfo"></div>
+
+            <!-- Messages dropdown -->
+            <div class="messages-section">
+                <button id="messagesToggle">✉️ Messages ▾</button>
+                <div id="messagesDropdown" class="messages-dropdown hidden">
+                    <button id="inboxBtn">📥 Inbox</button>
+                    <button id="newMessageBtn">✉️ + New Message</button>
+
+                    <!-- Inbox -->
+                    <div id="inboxSection" class="hidden">
+                        <div id="messagesList"></div>
+                    </div>
+
+                    <!-- New Message -->
+                    <div id="newMessageSection" class="hidden">
+                         <input id="msgPhoneNumber" type="text" placeholder="Phone Number" />
+                        <input id="msgCarId" type="number" placeholder="Car ID" />
+                        <button id="sendMessageBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="rentals-section">
+  <h3>🚗 My Rentals</h3>
+  <div id="rentalsList"></div>
+</div>
+
+        </div>
+    </div>
+
+    <script src="../apps/myaccount.js"></script>
+</body>
+</html>

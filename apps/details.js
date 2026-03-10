@@ -1,6 +1,7 @@
 let main = document.querySelector(`#main`);
 let id = window.location.search.split("=")[1]
 
+
 fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
 .then(resp => resp.json())
 .then(data => {
@@ -8,8 +9,14 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
     let card = document.createElement(`div`)
     card.innerHTML = createCard(data)
     main.appendChild(card)
+    let rentBtn = card.querySelector(`.rent-btn`)
+    rentBtn.addEventListener("click", () => {
+  window.location.href = `./purchase.html?id=${data.id}`
+})
+
 
 })
+
 
 
 
