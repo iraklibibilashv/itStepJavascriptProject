@@ -10,6 +10,7 @@ let logout = document.querySelector(`#logOut`);
 let myAccount = document.querySelector(`#myAccount`)
 let loader = document.querySelector("#loader")
 
+
 if(logout) {
   logout.addEventListener("click", () => {
     localStorage.removeItem("token")

@@ -188,11 +188,12 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
 
 function createCard(obj) {
   let phoneNumber = JSON.parse(localStorage.getItem(`phoneNumber`))
+  let token = localStorage.getItem("token")
   return `<div class="car-card">
     <div class="car-image-wrap">
       <img src="${obj.imageUrl3 || "placeholder.jpg"}" alt="${obj.brand || ""}" />
       <span class="car-badge">${obj.city || "უცნობი"}</span>
-       ${phoneNumber ? `<button class="fav-btn" data-id="${obj.id}">🤍</button>` : ``}
+       ${token ? `<button class="fav-btn" data-id="${obj.id}">🤍</button>` : ``}
     </div>
     <div class="car-info">
       <div class="car-name">${obj.brand || "უცნობი"} ${obj.model || ""}</div>

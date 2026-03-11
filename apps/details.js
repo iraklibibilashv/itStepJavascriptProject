@@ -37,6 +37,13 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/${id}`)
     main.appendChild(card)
     let rentBtn = card.querySelector(`.rent-btn`)
     rentBtn.addEventListener("click", () => {
+      if(!token){
+showAlert("Login required to rent car","error")
+setTimeout(()=>{
+window.location.href="./login.html"
+},1500)
+return
+}
   window.location.href = `./purchase.html?id=${data.id}`
 })
 
@@ -73,4 +80,22 @@ function createCard(obj) {
     </div>
   </div>`
 
+}
+function showAlert(message, type = `success`) {
+  let alert = document.createElement(`div`)
+  alert.className = `custom-alert ${type}`
+  alert.innerHTML = `
+    <span>${type === `success` ? `✅` : `❌`}</span>
+    <p>${message}</p>
+    <button class="alert-close">✕</button>
+  `
+  document.body.appendChild(alert)
+
+  alert.querySelector(`.alert-close`).addEventListener(`click`, () => {
+    alert.remove()
+  })
+
+  setTimeout(() => {
+    alert.remove()
+  }, 2000)
 }
