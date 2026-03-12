@@ -53,7 +53,7 @@ if(token) {
 }
 
 
-
+// ფავორიტებში დამატება
 function addFavListener(card,obj) {
   let btn = card.querySelector(`.fav-btn`)
   if(!btn) return
@@ -83,7 +83,7 @@ function addFavListener(card,obj) {
   })
 }
 
-
+// ყველა მანქანა index.html ზე
 function pageCars() {
   fetch(
     `https://rentcar.stepprojects.ge/api/Car/paginated?pageIndex=${pageIndex}&pageSize=${pageSize}`)
@@ -116,7 +116,7 @@ nextBtn.addEventListener("click", () => {
 })
 pageCars()
 
-
+// ფილტრის CarID
 
 filterBtn.addEventListener("click", () => {
   if(carId.value.trim()) {
@@ -135,7 +135,7 @@ filterBtn.addEventListener("click", () => {
   })
   return
   }
-
+// მთლიანი ფილტრი
   fetch( `https://rentcar.stepprojects.ge/api/Car/filter?capacity=${capacity.value}&startYear=${startYear.value}&endYear=${endYear.value}&city=${city.value}&pageIndex=1&pageSize=10`,)
     .then((resp) => resp.json())
     .then((data) => {
@@ -153,7 +153,7 @@ filterBtn.addEventListener("click", () => {
       });
     });
 });
-
+// პოპულარული მანქანები
 loader.style.display = "flex"
 fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
   .then((resp) => resp.json())
@@ -171,7 +171,7 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/popular`)
     });
   });
 
-
+// ქალაქების dropdown
 fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
 .then(resp => resp.json())
 .then (data => {
@@ -185,7 +185,7 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/cities`)
 })
 
 
-
+// car რენდერი
 function createCard(obj) {
   let phoneNumber = JSON.parse(localStorage.getItem(`phoneNumber`))
   let token = localStorage.getItem("token")
