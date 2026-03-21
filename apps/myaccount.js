@@ -97,6 +97,10 @@ document.querySelector(`#sendMessageBtn`).addEventListener(`click`, () => {
         showAlert(`Message Sent!`)
         document.querySelector(`#msgCarId`).value = ``
         document.querySelector(`#newMessageSection`).classList.add(`hidden`)
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
+        
     })
 })
 

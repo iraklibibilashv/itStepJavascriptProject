@@ -41,7 +41,10 @@ if(!phoneNumber) {
     
 }
 clearBtn.addEventListener("click", () => {
-    favGrid.innerHTML = ``
+    favGrid.innerHTML = `         <div class="empty-state">
+                <span>💔</span>
+                <p>No Favourite Cars</p>
+            </div>`
 })
 
 loader.style.display = "flex"
@@ -71,6 +74,12 @@ fetch(`https://rentcar.stepprojects.ge/api/Users/${phoneNumber}/favorite-cars`)
               car.querySelector(`.remove-btn`)?.addEventListener(`click`, (e) => { // ✅
         e.stopPropagation()
         document.querySelector(`#car-${e.target.dataset.id}`).remove()
+        if(!favGrid.querySelector(".car-card")) {
+          favGrid.innerHTML = `         <div class="empty-state">
+                <span>💔</span>
+                <p>No Favourite Cars</p>
+            </div>`
+        }
       })
       car.addEventListener(`click`, () => {
         window.location.href = `./details.html?id=${obj.id}`
