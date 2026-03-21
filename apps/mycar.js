@@ -12,7 +12,7 @@ if(logout) {
     localStorage.removeItem("token")
     localStorage.removeItem("userRole")
     localStorage.removeItem("userEmail")
-    window.location.reload()
+    window.location.href = "../index.html"
   })
 }
 

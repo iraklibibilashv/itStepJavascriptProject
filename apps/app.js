@@ -37,7 +37,9 @@ if(logout) {
     localStorage.removeItem("token")
     localStorage.removeItem("userRole")
     localStorage.removeItem("userEmail")
-    window.location.href = "/index.html"
+    localStorage.removeItem("phoneNumber")
+    
+    window.location.href = "../index.html"
     
   })
 }
