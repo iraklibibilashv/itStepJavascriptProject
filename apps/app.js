@@ -110,7 +110,7 @@ prevBtn.addEventListener("click",() => {
   pageIndex--
   pageCars()
   window.scrollTo({
-    top: 1000,
+    top: 0,
     behavior : "smooth"
   })
 })
@@ -118,7 +118,7 @@ nextBtn.addEventListener("click", () => {
   pageIndex++
   pageCars()
   window.scrollTo({
-    top: 1000,
+    top: 0,
     behavior : "smooth"
   })
 })
