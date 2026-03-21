@@ -6,12 +6,15 @@ let addCar = document.querySelector(`#addCar`);
 let myCars = document.querySelector(`#myCars`);
 let logout = document.querySelector(`#logOut`);
 let myAccount = document.querySelector(`#myAccount`)
+if(!token) {
+    window.location.href = `../index.html`
+}
 if(logout) {
   logout.addEventListener("click", () => {
     localStorage.removeItem("token")
     localStorage.removeItem("userRole")
     localStorage.removeItem("userEmail")
-    window.location.href = "../index.html"
+    window.location.reload()
   })
 }
 
